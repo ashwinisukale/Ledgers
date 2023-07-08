@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'dashboard/index'
   root 'ledger#display'
   get 'ledger/display'
   post 'ledger/upload_file', to: 'ledger#upload_file', as: :upload_file
