@@ -31,10 +31,13 @@ Security Areas:
 - Inform your team mates or manager about this issue, if anyone of them are aware of any new feature regression they can give you some hints or atleast it keep your team and manager informed about the issue, keep them in loop.
 
 - I will first check if bank api is giving the data for that user
-- 
+  
 Case 1: If bank api is not giving the information
+
 - Communicate to the bank, check the logs, corss check if there is any update from the bank which we missed to incorparate
+
 Case 2: if bank api is giving the user transaction and its not appearing in our system
+
 - Check error logs
 - Check recent code changes around that feature
 - check who worked recently on that area
@@ -44,6 +47,7 @@ Case 2: if bank api is giving the user transaction and its not appearing in our 
 - check if its the date issue which is why we are not showing any data on UI
 - which jobs we run daily, are there any changes done on that backgound job
 
+Followup: email customer for the update on the issue
 
 ### 2. Email writting
 
