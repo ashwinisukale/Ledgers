@@ -1,0 +1,53 @@
+// Place all the styles related to the Ledger controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+html {
+  font-family: "helvetica neue", helvetica, arial, freesans, "liberation sans", "numbus sans l", sans-serif;
+}
+
+h1 {
+  font-size: 2em;
+  font-weight: 300;
+  margin: 1em 0;
+  text-align: center;
+}
+
+h1 > .small {
+  font-size: 0.5em;
+  font-weight: 300;
+  color: #999;
+}
+
+.content {
+  width: 800px;
+  margin: auto;
+}
+
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table th,
+table td {
+  padding: 8px;
+  text-align: left;
+}
+
+/* Apply styles to table header */
+table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+/* Alternate row background colors */
+table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* Highlight on hover */
+table tr:hover {
+  background-color: #e6e6e6;
+}

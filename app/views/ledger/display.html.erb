@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Investor Ledger</title>
+  </head>
+
+  <body>
+    <h1>
+      Your investing account ($<%= @balance%> available)
+      <div class="small"><%= min_transaction_date%> - <%= max_transaction_date%></div>
+    </h1>
+
+    <div class="content">
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Transaction</th>
+            <th>Amount</th>
+            <th>Balance</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @transactions.each do |transaction| %>
+            <tr>
+              <td><%= transaction.date.strftime("%m/%d/%Y") %></td>
+              <td><%= description(transaction) %></td>
+              <td><%= transaction.amount %></td>
+              <td><%= transaction.balance %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    
+    <div style="padding-top: 60px">
+    <h3>This functionality is designed for the interviewer to test the application's behavior using different JSON file data as a substitute for an API.</h3>
+      <form action="<%= upload_file_path %>" method="post" enctype="multipart/form-data" onsubmit="return validateFileUpload()">
+        <%= csrf_meta_tags %>
+        <input type="file" name="ledger_file" id="ledger_file_input">
+        <input type="submit" value="Upload">
+        <p id="file_error_message" style="display: none; color: red;">Please upload a JSON file.</p>
+      </form>
+
+       <div style="padding-top: 60px">
+        <% flash.each do |key, message| %>
+          <div class="flash <%= key %>" style="color:blue">
+            <div id="flash_message"><%= message %></div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    </div>
+  </body>
+</html>
+
+<script>
+  function validateFileUpload() {
+    var fileInput = document.getElementById('ledger_file_input');
+    var file = fileInput.files[0];
+    var errorMessage = document.getElementById('file_error_message');
+
+    if (!file || file.type !== 'application/json') {
+      errorMessage.style.display = 'block';
+      return false;
+    }
+
+    errorMessage.style.display = 'none';
+    return true;
+  }
+
+  $.ajaxSetup({
+  headers: {
+    'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+  }
+});
+</script>
