@@ -1,10 +1,10 @@
 module LedgerHelper
   def min_transaction_date
-    Transaction.minimum(:date).strftime("%m/%d/%Y") if Transaction.first
+    EquityTransaction.minimum(:date).strftime("%m/%d/%Y") if EquityTransaction.first
   end
 
   def max_transaction_date
-    Transaction.maximum(:date).strftime("%m/%d/%Y") if Transaction.first
+    EquityTransaction.maximum(:date).strftime("%m/%d/%Y") if EquityTransaction.first
   end
 
   def description(transaction)

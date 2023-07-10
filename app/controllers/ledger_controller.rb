@@ -2,7 +2,7 @@ class LedgerController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [:upload_file]
 
   def display
-    @transactions = Transaction.order(date: :desc).distinct
+    @transactions = EquityTransaction.order(date: :desc).distinct
     @balance = @transactions.first ? @transactions.first.balance : 0 
   end
 
@@ -13,7 +13,7 @@ class LedgerController < ApplicationController
       ledger_entries = JSON.parse(json_data)
       # Process and save the ledger_entries as transactions
       ledger_entries.each do |entry|
-        transaction = Transaction.new(
+        transaction = EquityTransaction.new(
           activity_id: entry['activity_id'],
           date: entry['date'],
           transaction_type: entry['type'],

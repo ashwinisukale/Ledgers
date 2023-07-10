@@ -19,28 +19,10 @@ ActiveRecord::Schema.define(version: 2023_07_08_080214) do
     t.integer "transaction_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["transaction_id"], name: "index_destinations_on_transaction_id"
+    t.index [nil], name: "index_destinations_on_equity_transaction_id"
   end
 
-  create_table "requesters", force: :cascade do |t|
-    t.string "type"
-    t.integer "transaction_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["transaction_id"], name: "index_requesters_on_transaction_id"
-  end
-
-  create_table "sources", force: :cascade do |t|
-    t.string "type"
-    t.integer "source_id"
-    t.string "description"
-    t.integer "transaction_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["transaction_id"], name: "index_sources_on_transaction_id"
-  end
-
-  create_table "transactions", force: :cascade do |t|
+  create_table "equity_transactions", force: :cascade do |t|
     t.integer "activity_id"
     t.datetime "date"
     t.string "transaction_type"
@@ -56,6 +38,24 @@ ActiveRecord::Schema.define(version: 2023_07_08_080214) do
     t.string "destination_type"
     t.integer "destination_id"
     t.string "destination_description"
+  end
+
+  create_table "requesters", force: :cascade do |t|
+    t.string "type"
+    t.integer "transaction_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index [nil], name: "index_requesters_on_equity_transaction_id"
+  end
+
+  create_table "sources", force: :cascade do |t|
+    t.string "type"
+    t.integer "source_id"
+    t.string "description"
+    t.integer "transaction_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index [nil], name: "index_sources_on_equity_transaction_id"
   end
 
 end

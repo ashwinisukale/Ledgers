@@ -1,4 +1,4 @@
-class Transaction < ApplicationRecord
+class EquityTransaction < ApplicationRecord
   validates :activity_id, presence: true, uniqueness: true
   validates :date, presence: true
   validates :amount, presence: true

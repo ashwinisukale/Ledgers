@@ -13,7 +13,7 @@ namespace :parse_ledger do
 
       # Process and save each transaction
       ledger_entries.each do |entry|
-        transaction = Transaction.new(
+        transaction = EquityTransaction.new(
           activity_id: entry['activity_id'],
           date: entry['date'],
           transaction_type: entry['type'],
@@ -54,7 +54,7 @@ namespace :parse_ledger do
 
       # Process and save each transaction
       ledger_entries.each do |entry|
-        transaction = Transaction.new(
+        transaction = EquityTransaction.new(
           activity_id: entry['activity_id'],
           date: entry['date'],
           transaction_type: entry['type'],
@@ -88,7 +88,7 @@ namespace :parse_ledger do
 
   task concatenated_task: :environment do
     # Clear existing transactions (optional)
-    Transaction.delete_all
+    EquityTransaction.delete_all
 
     Rake::Task['parse_ledger:complicated_ledger'].invoke
     Rake::Task['parse_ledger:duplicate_ledger'].invoke

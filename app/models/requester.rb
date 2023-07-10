@@ -1,3 +1,3 @@
 class Requester < ApplicationRecord
-  belongs_to :transaction
+  belongs_to equity_transaction
 end
