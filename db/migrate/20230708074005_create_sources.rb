@@ -4,7 +4,7 @@ class CreateSources < ActiveRecord::Migration[5.2]
       t.string :type
       t.integer :source_id
       t.string :description
-      t.references equity_transaction, foreign_key: true
+      t.references :equity_transaction, foreign_key: true
 
       t.timestamps
     end
